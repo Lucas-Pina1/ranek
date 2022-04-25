@@ -11,7 +11,7 @@
             />
             <p>{{ produto.descricao }}</p>
             <h2 class="titulo">{{ produto.nome }}</h2>
-            <p class="preco">{{ produto.preco }}</p>
+            <p class="preco">{{ produto.preco | numeroPreco }}</p>
           </router-link>
         </div>
         <ProdutosPaginar

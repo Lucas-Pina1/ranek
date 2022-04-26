@@ -1,11 +1,11 @@
 import { api } from "@/services/services";
 import Vue from "vue";
 import Vuex from "vuex";
-import { api } from "@/services/services";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  strict: true,
   state: {
     login: false,
     usuario: {
@@ -27,10 +27,10 @@ export default new Vuex.Store({
     },
 
     UPDATE_USUARIO(state, payload) {
-      state.usuario = payload;
+      state.usuario = Object.assign(state.usuario, payload);
     },
   },
-  getters: {
+  actions: {
     getUsuario(context, payload) {
       api.get(`/usuario/${payload}`).then((response) => {
         context.commit("UPDATE_USUARIO", response.data);
@@ -38,6 +38,6 @@ export default new Vuex.Store({
       });
     },
   },
-  actions: {},
+  getters: {},
   modules: {},
 });

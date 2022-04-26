@@ -1,9 +1,11 @@
 <template>
-  <p>Página do Usuário</p>
+  <p>Página do Usuário {{ $store.state.usuario }}</p>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Usuario",
+};
 </script>
 
 <style></style>

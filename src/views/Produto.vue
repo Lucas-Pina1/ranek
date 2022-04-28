@@ -2,7 +2,7 @@
   <section>
     <div v-if="produto" class="produto">
       <ul class="fotos" v-if="produto.fotos">
-        <li v-for="(foto, index) in produto.fotos" :key="key">
+        <li v-for="(foto, index) in produto.fotos" :key="index">
           <img :src="foto.src" alt="foto.titulo" />
         </li>
       </ul>

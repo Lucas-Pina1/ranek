@@ -9,6 +9,7 @@
     <label for="nome">Descrição</label>
     <textarea id="nome" name="nome" v-model="produto.descricao"></textarea>
     <input
+      class="btn"
       type="button"
       value="Adicionar Produto"
       @click.prevent="adicionarProduto"

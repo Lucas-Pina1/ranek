@@ -65,7 +65,7 @@ export default new Vuex.Store({
           password: payload.senha,
         })
         .then((response) => {
-          window.localStorage.token = `Bearer ${response.data.token}`
+          window.localStorage.token = `Bearer ${response.data.token}`;
           console.log(response);
         });
     },
@@ -82,6 +82,7 @@ export default new Vuex.Store({
         cidade: "",
         estado: "",
       });
+      window.localStorage.removeItem("token");
       context.commit("UPDATE_LOGIN", false);
     },
   },

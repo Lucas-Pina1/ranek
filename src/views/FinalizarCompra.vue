@@ -1,6 +1,7 @@
 <template>
   <section>
     <h2>Endereço de Envio</h2>
+    <erro-notificacao :erros="erros"></erro-notificacao>
     <UsuarioForm>
       <button class="btn" @click.prevent="finalizarCompra">
         Finalizar Compra
@@ -13,13 +14,20 @@
 import UsuarioForm from "@/components/UsuarioForm.vue";
 import { api } from "@/services/services";
 import { mapState } from "vuex";
+import ErroNotificacao from "@/components/ErroNotificacao.vue";
 
 export default {
   name: "FinalizarCompra",
   components: {
     UsuarioForm,
+    ErroNotificacao,
   },
   props: ["produto"],
+  data() {
+    return {
+      erros: [],
+    };
+  },
   computed: {
     ...mapState(["usuario"]),
     compra() {
@@ -52,10 +60,11 @@ export default {
         await this.criarTransacao();
         this.$router.push({ name: "usuario" });
       } catch (error) {
-        console.log(error);
+        this.erros.push(error.response.data.menssage);
       }
     },
     finalizarCompra() {
+      this.erros = [];
       if (this.$store.state.login) {
         this.criarTransacao();
       } else {

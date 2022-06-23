@@ -3,10 +3,12 @@ import App from "./App.vue";
 import router from "./router/router";
 import store from "./store";
 import PaginaCarregando from "@/components/PaginaCarregando.vue";
+import ErroNotificacao from "@/components/ErroNotificacao.vue";
 
 Vue.config.productionTip = false;
 
 Vue.component("PaginaCarregando", PaginaCarregando);
+Vue.component("ErroNotificacao", ErroNotificacao);
 
 Vue.filter("numeroPreco", (valor) => {
   valor = Number(valor);
@@ -18,7 +20,6 @@ Vue.filter("numeroPreco", (valor) => {
   } else {
     return "";
   }
-  console.log(valor);
 });
 
 new Vue({
